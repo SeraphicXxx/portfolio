@@ -271,6 +271,7 @@ nav.scrolled {
 @media (max-width: 768px) {
   nav { padding: 0 32px; }
   .nav-links {
+    z-index: 99;
     position: fixed;
     top: 70px;
     left: 0; right: 0;
@@ -282,7 +283,6 @@ nav.scrolled {
     border-top: 1px solid var(--border-faint);
     transform: translateY(-110%);
     transition: transform 0.5s var(--ease-gold);
-     z-index: 99;
     pointer-events: none;
   }
   .nav-links.open { transform: translateY(0); pointer-events: all; }
@@ -1085,24 +1085,56 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
-  nav { padding: 0 32px; }
+
+  nav {
+    padding: 0 24px;
+    z-index: 1000;
+  }
+
+  .nav-logo,
+  .nav-toggle {
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
   .nav-links {
     position: fixed;
     top: 70px;
-    left: 0; right: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
-    padding: 64px 0;
+
+    gap: 24px;
+    padding: 32px 0;
+
     background: rgba(240,232,216,0.98);
+    backdrop-filter: blur(12px);
+
     border-top: 1px solid var(--border-faint);
-    transform: translateY(-110%);
-    transition: transform 0.5s var(--ease-gold);
+    border-bottom: 1px solid var(--border-faint);
+
+    transform: translateY(-120%);
+    transition: transform 0.4s var(--ease-gold);
+
     pointer-events: none;
+    z-index: 999;
   }
-  .nav-links.open { transform: translateY(0); pointer-events: all; }
-  .nav-links a { font-size: 0.75rem; }
-  .nav-toggle { display: flex; }
+
+  .nav-links.open {
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
 }
 
 #hero {
